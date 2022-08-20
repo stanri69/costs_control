@@ -1,0 +1,41 @@
+<h1>Welcome to cost control</h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      Food
+      <%= Item.where(category: :Food).sum(:price) %>
+    </div>
+    <div class="col">
+      Utilities
+      <%= Item.where(category: :Utilities).sum(:price) %>
+    </div>
+    <div class="col">
+      Technique
+      <%= Item.where(category: :Technique).sum(:price) %>
+    </div>
+    <div class="col">
+      Miscellaneous
+      <%= Item.where(category: :Miscellaneous).sum(:price) %>
+    </div>
+  </div>
+</div>
+
+<% if user_signed_in? %>
+  <% @items.each do |item| %>
+    <table>
+      <tr>
+        <th>Date</th>
+        <th>Cost category</th>
+        <th>Price</th>
+      </tr>
+      <tr>
+        <td><%= item.dob %></td>
+        <td><%= item.category %></td>
+        <td><%= item.price %></td>
+      </tr>
+    </table>
+  <% end %>
+
+  <%= link_to 'new item', new_item_path, :class => "btn btn-dark" %>
+<% end %>

@@ -1,0 +1,6 @@
+<%= simple_form_for @item do |f| %>
+  <%= f.input :category, :as => :select, collection: Item::CATEGORY.values, label: "category cost" %>
+  <%= f.input :price %>
+  <%= f.input :dob, as: :datetime, html5: true %>
+  <%= f.button :submit, class: "btn btn-danger btn-lg"  %>
+<% end %>
