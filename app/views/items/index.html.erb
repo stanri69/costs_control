@@ -37,5 +37,6 @@
     </table>
   <% end %>
 
-  <%= link_to 'new item', new_item_path, :class => "btn btn-dark" %>
+  <%= link_to 'New item', new_item_path, :class => "btn btn-dark" %>
+  <%= link_to 'Destroy them all', delete_all_path, :class => "btn btn-dark", method: :delete, confirm: 'Are you crazy?' %>
 <% end %>

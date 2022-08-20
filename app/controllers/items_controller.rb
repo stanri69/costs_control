@@ -39,6 +39,10 @@ class ItemsController < ApplicationController
     redirect_to root_path
   end
 
+  def delete_all
+    Item.delete_all
+  end
+
   private
 
   def item_params
