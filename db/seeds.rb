@@ -1,9 +1,9 @@
 require 'faker'
 
-user = User.create!(
-  email: "uesr@mail.com",
-  password: 123123
-)
+# user = User.create!(
+#   email: "uesr@mail.com",
+#   password: 123123
+# )
 
 10.times do
   item = Item.create!(
