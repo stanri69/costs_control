@@ -16,6 +16,7 @@ bundle install
 rails db:create
 rails db:migrate
 rails db:seed
+rails s 
 ```
 Then open  seeds.rb, copy the user email and user password: `db/seeds.rb`
 
