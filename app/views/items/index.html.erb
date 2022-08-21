@@ -1,0 +1,52 @@
+<h1>Welcome to cost control</h1>
+<% if user_signed_in? %>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          Food
+          <%= Item.where(category: :Food).sum(:price) %>
+        </div>
+        <div class="col">
+          Utilities
+          <%= Item.where(category: :Utilities).sum(:price) %>
+        </div>
+        <div class="col">
+          Technique
+          <%= Item.where(category: :Technique).sum(:price) %>
+        </div>
+        <div class="col">
+          Miscellaneous
+          <%= Item.where(category: :Miscellaneous).sum(:price) %>
+        </div>
+      </div>
+    </div>
+
+  <div class="row">
+    <div class="pull-right range-query">
+      <%= form_tag items_path, method: :get do %>
+        <%= text_field_tag 'search[date_from]', @search.date_from %>
+        <%= text_field_tag 'search[date_to]', @search.date_to %>
+        <%= submit_tag 'Search', class: "btn btn-success btn-lg"  %>
+      <% end %>
+    </div>
+  </div>
+
+  <% @items.each do |item| %>
+    <table>
+      <tr>
+        <th>Date</th>
+        <th>Cost category</th>
+        <th>Price</th>
+      </tr>
+      <tr>
+        <td><%= item.dob %></td>
+        <td><%= item.category %></td>
+        <td><%= item.price %></td>
+      </tr>
+    </table>
+  <% end %>
+
+  <%= link_to 'New costs', new_item_path, :class => "btn btn-dark" %>
+  <%= link_to 'Delete them all', delete_all_path, :class => "btn btn-dark", method: :delete, confirm: 'Are you crazy?' %>
+  <%= link_to 'Clear search', root_path, :class => "btn btn-dark" %>
+<% end %>
