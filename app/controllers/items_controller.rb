@@ -1,12 +1,9 @@
 class ItemsController < ApplicationController
-  before_action :find_item, only: [:show, :edit, :update, :destroy]
+  before_action :find_item, only: [:edit, :update, :destroy]
 
   def index
-    @items = Item.all.order("created_at DESC")
-  end
-
-  def show
-    @items = Item.all
+    @search = ItemSearch.new(params[:search])
+    @items = @search.scope
   end
 
   def new
